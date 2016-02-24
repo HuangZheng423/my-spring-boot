@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html ng-app>
+<head>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js" ></script>
+    <script src="/webapp/js/user.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="findOne">
+        <p>The ID is {{user.id}}</p>
+        <p>The UserName is {{user.userName}}</p>
+    </div>
+    <p></p>
+    <div  ng-controller="insertUser" ng-model="user">
+            <input name="id" ng-model="user.id">
+            <input name="userName" ng-model="user.userName">
+            <input name="passWord" ng-model="user.passWord">
+            <input type="submit" ng-click="insert()" >
+        <hr>
+        <p>UserForm :{{user}}</p>
+        <p>master:{{master}}</p>
+    </div>
+    <hr>
+    <div ng-model="user" ng-controller="findAll">
+        <table ng-repeat="x in user">
+            <td>{{x.id}}</td>
+            <td>{{x.userName}}</td>
+            <td>{{x.passWord}}</td>
+        </table>
+
+    </div>
+
+
+</body>
+</html>

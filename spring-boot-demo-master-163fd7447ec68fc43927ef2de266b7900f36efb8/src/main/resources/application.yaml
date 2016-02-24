@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    platform: mysql
+    schema: mybatis/schema-mysql.sql
+    url: jdbc:mysql://localhost/test
+    username: root
+    password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+
+
+# MyBatis
+mybatis:
+    typeAliasesPackage: com.note4code.model
+    mapperLocations: classpath:com.note4code.mapping.*.xml
+    entityMapper: com.github.abel533.entity.EntityMapper
+    sqlMapper: org.mybatis.spring.SqlSessionTemplate
+

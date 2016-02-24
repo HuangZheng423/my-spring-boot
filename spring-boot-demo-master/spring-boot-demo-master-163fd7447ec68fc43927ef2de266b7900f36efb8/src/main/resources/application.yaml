@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    platform: mysql
+    schema: mybatis/schema-mysql.sql
+    url: jdbc:mysql://localhost/mybatis
+    username: mybatis_user
+    password: password4mybatis
+    driverClassName: com.mysql.jdbc.Driver

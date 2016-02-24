@@ -1,0 +1,6 @@
+<div>
+    <h3>ID: $person.id</h3>
+    <h4>Name: $person.name</h4>
+    <h4>Phone: $person.phone</h4>
+    <h4>Email: $person.email</h4>
+</div>

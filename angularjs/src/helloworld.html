@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script >
+    var app = angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.yourname='li';
+        $scope.firstName='zhao';
+    });
+     app.controller('secondCtrl',function($scope){
+        $scope.firstName='la';
+        $scope.lastName='ji';
+        $scope.fullName = function(){
+            return $scope.firstName+" "+$scope.lastName;
+        };
+    });
+    app.controller('thirdCtrl',function($scope){
+        $scope.firstName='la';
+        $scope.lastName='ji';
+        $scope.myVar=false;
+        $scope.fullName = function(){
+            return $scope.firstName+" "+$scope.lastName;
+        };
+        $scope.toggle = function(){
+            $scope.myVar = !$scope.myVar;
+        }
+    });
+
+    app.controller('fourthCtrl',function($scope){
+        $scope.master={firstName:'huang',lastName:'zheng'};
+        $scope.reset = function(){
+            $scope.user=angular.copy($scope.master);
+        };
+
+    });
+
+</script>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    Your name:<input type="text" ng-model="yourname" placeholder="world">
+    <p></p>
+    Your name:
+    <select ng-model="yourname" >
+        <option value="huang">huang</option>
+        <option value="zheng">zheng</option>
+    </select>
+    <hr>
+    <div ng-init="person={firstName:'huang',lastName:'zheng'}">
+        <h2>对象</h2>
+        <p>姓：{{person.firstName}}</p>
+        <p>名：{{person.lastName}}</p>
+        <p>姓为：<span ng-bind="person.firstName"></span></p>
+        <p>名为：<span ng-bind="person.lastName"></span></p>
+        {{5+5}}
+    </div>
+    <hr>
+    Hello {{yourname||'World'}}!
+    <hr>
+     <div ng-controller="secondCtrl">
+         <h2>secondCtrl</h2>
+        firstName:<input type="text" ng-model="firstName" placeholder="world">
+        lastName:<input type="text" ng-model="lastName" placeholder="hello">
+        fullname: {{fullName()}}
+    </div>
+    <hr>
+
+    <div ng-init="name=['zhao','qian','sun','li']">
+        <h2>ng-repeat</h2>
+        <li ng-repeat="x in name">{{x}}</li>
+    </div>
+
+    <hr>
+    <div>
+        <h2>validate</h2>
+        <form name="myForm">
+            <input type="email" name="myAddress" ng-model="text" required>
+            <span ng-show="myForm.myAddress.$error.email">not a correct email format</span>
+            <h1>
+                {{myForm.myAddress.$valid}};
+                {{myForm.myAddress.$dirty}};
+                {{myForm.myAddress.$touched}};
+            </h1>
+        </form>
+    </div>
+    <hr>
+    <div ng-controller="thirdCtrl">
+        <h2>隐藏/显示</h2>
+        <button ng-click="toggle()">>隐藏/显示 </button>
+        <p ng-hide="myVar">
+            firstName:<input type="text" ng-model="firstName" placeholder="world">
+            lastName:<input type="text" ng-model="lastName" placeholder="hello">
+        </p>
+    </div>
+    <hr>
+    <div ng-controller="fourthCtrl">
+        <h2>表单</h2>
+        <form novalidate>
+            First Name: <input type="text" ng-model="user.firstName">
+            <br>
+            Last Name: <input type="text" ng-model="user.lastName">
+            <button ng-click="reset()">RESET</button>
+        </form>
+        <p>Form = {{user}}</p>
+        <p>Form = {{master}}</p>
+    </div>
+</div>
+
+</div>
+<hr>
+
+
+
+</body>
+</html>
